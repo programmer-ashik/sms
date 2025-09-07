@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Orbitron:wght@400..900&family=Outfit:wght@100..900&display=swap");
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@theme {
+  --font-sans: "Poppins", sans-serif;
+  --font-serif: "Lora", serif;
+  --font-primary: "Plexend", serif;
+  --font-banner: "Orbitron", sans-serif;
+  /* Colors */
+  --color-primary: #f5f5f5; /* Deep blue-gray for main headings */
+  /* for dark bg */
+  --color-darkBg: #222831;
+  /* for dark text-color */
+  --color--textDark: #f5f5f5;
+  --color-secondary: #030303; /* Soft gray for subtitles/metadata */
+  --color-accent: #e67e22; /* Warm orange for highlights/links */
+  --color-error: #e74c3c; /* Red for error messages/alerts */
+  --color-text: #333333; /* Standard readable text color */
+  --color-muted: #95a5a6; /* Faded gray for secondary info */
+  --color-offwhite: #fbfbfb;
+  --color-main: #08cb00;
+  --color-gray-2: #7adaa5;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+[data-theme="dark"] {
+  /* Dark mode colors */
+  --color-bg: #1f2937;
+  --color-text: #f9fafb;
+  --color-primary: #818cf8;
+  --color-accent: #f97316;
+}
+.my_border {
+  @apply border-b-2 hover:border-b-0 border-r-2 hover:border-r-0 border-[#08cb00] rounded-[20px] cursor-pointer;
+}
+.tmponhover {
+  position: relative;
+  overflow: hidden;
+}
+.theme-text {
+  @apply text-gray-900 dark:text-gray-200;
+}
+.theme-bg {
+  @apply bg-gray-100 dark:bg-darkBg;
+}
+.theme-border {
+  @apply p-[1px] rounded-md bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 dark:from-purple-600 dark:via-blue-500 dark:to-cyan-400;
+}
+.tmponhover::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(var(--color-primary), transparent, transparent);
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  transition: 0.5s, top 0s, left 0s;
+  border-radius: 20px;
+}
+
+.tmponhover:hover::before {
+  opacity: 1;
+}
+
+.tmponhover::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: var(--color-gray-2);
+  border-radius: 20px;
+}
+
+.tmponhover > * {
+  z-index: 2;
+  position: relative;
+}
+/* dashboard css */
+.g_p {
+  @apply p-1;
+}
+.icon {
+  @apply text-3xl;
+}
