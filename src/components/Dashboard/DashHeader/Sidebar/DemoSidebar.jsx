@@ -67,9 +67,9 @@ function SectionHeader({ label, icon, open, onToggle, className }) {
       onClick={onToggle}
       aria-expanded={open}
       className={cx(
-        "group flex w-[150px] sm:w-[290px] items-center gap-3 rounded-xl px-3 py-2 text-left",
-        "hover:bg-zinc-100 theme-text theme-bg focus:outline-none focus:ring-2 focus:ring-primary/50",
-        open ? "bg-zinc-100 dark:bg-zinc-800" : "",
+        "group border-2 flex w-[150px] md:w-[100%] items-center gap-3 rounded-xl px-3 py-2 text-left",
+        "hover:bg-zinc-100 theme-text theme-bg",
+        open ? "border-2 text-purple-500" : " text-purple-700",
         className
       )}
     >
@@ -102,9 +102,7 @@ function SectionBody({ children, open }) {
           transition={{ type: "tween", duration: 0.18 }}
           className="overflow-hidden"
         >
-          <div className=" border-l border-zinc-200 dark:border-zinc-800 text-center">
-            {children}
-          </div>
+          <div className=" text-center">{children}</div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -117,23 +115,25 @@ function LeafItem({ item, active, onClick, activeClass = "" }) {
       type="button"
       onClick={() => onClick?.(item)}
       className={cx(
-        "flex w-[150px] sm:w-[280px] items-center px-2 py-2 text-sm",
+        "flex w-[150px] md:w-[90%] items-center py-2 text-sm",
         " mx-2 border-l-2 border-l-zinc-700",
-        active ? activeClass : "theme-text bg-none "
+        active ? activeClass : " "
       )}
       aria-current={active ? "page" : undefined}
     >
       <Link
         to={item.to}
-        className={`block w-full text-left ${
-          active && "flex justify-start items-center"
+        className={`block relative w-full text-left mx-2 hover:text-primary ${
+          active && "text-primary font-normal transition-colors duration-500"
         }`}
       >
-        <div
-          className={`h-2 w-2 rounded-full bg-none ${
-            active && "bg-gray-900 dark:bg-gray-200 absolute left-[14px]"
-          }`}
-        ></div>
+        {active && (
+          <motion.div
+            layoutId="activeBall"
+            className="absolute -left-2 top-1/2 w-3 h-3 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2"
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          />
+        )}
         {item.label}
       </Link>
     </button>
@@ -155,7 +155,7 @@ function Section({
   if (!hasChildren && section.to) {
     const active = section.id === activeId;
     return (
-      <div className="px-0">
+      <div className=" w-full px-0">
         <LeafItem
           item={section}
           active={active}
@@ -167,7 +167,7 @@ function Section({
   }
 
   return (
-    <div className="">
+    <div className="w-full px-0">
       <SectionHeader
         label={section.label}
         icon={section.icon}
@@ -175,7 +175,7 @@ function Section({
         onToggle={onToggle}
       />
       <SectionBody open={open}>
-        <div className="py-1 overflow-x-hidden">
+        <div className="py-1 w-full overflow-x-hidden">
           {section.children?.map((child) => (
             <LeafItem
               key={child.id}
@@ -221,9 +221,7 @@ export function Sidebar({
 
   return (
     <nav
-      className={`w-full h-[97vh] overflow-scroll dark:border-zinc-800",
-        "bg-white/70 dark:bg-zinc-900/60 backdrop-blur",
-        "p-2 shadow-md py-1 pl-2`}
+      className={`w-full h-[100vh] overflow-scroll backdrop-blur shadow-md px-2`}
     >
       <div className="space-y-1 rounded-ms">
         {items.map((section) => (
@@ -241,19 +239,12 @@ export function Sidebar({
     </nav>
   );
 }
-
-/**
- * Example usage demo — replace NAV_ITEMS with your full JSON config.
- * You can copy-paste your JSON and pass it into <DemoSidebar/> below.
- */
-
 export default function DemoSidebar({ openSidebar }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeId, setActiveId] = useState(null);
 
   useEffect(() => {
-    // nav_menu থেকে match খুঁজে বের করা
     const allItems = nav_menu[0].items.flatMap((section) =>
       section.children ? section.children : section
     );
@@ -266,19 +257,15 @@ export default function DemoSidebar({ openSidebar }) {
 
   const handleNavigate = (item) => {
     setActiveId(item.id);
-    navigate(item.to); // router দিয়ে navigate
+    navigate(item.to);
   };
 
   return (
     <div
-      className={` dark:bg-gray-800 theme-text space-y-4 transform transition-transform duration-300 
-      ${
-        openSidebar
-          ? "translate-x-0 dark:bg-gray-800 theme-bg theme-text"
-          : "-translate-x-full"
-      } 
-      md:translate-x-0 md:static fixed left-0 z-20
-     max-h-screen overflow-x-auto`}
+      className={`theme-text theme-bg space-y-4 transform transition-transform duration-300
+      ${openSidebar ? "translate-x-0" : "-translate-x-full"} 
+      lg:translate-x-0 lg:static fixed left-0 z-[999]
+     h-[90vh] pb-3 overflow-x-auto`}
     >
       <Sidebar
         items={nav_menu[0].items}

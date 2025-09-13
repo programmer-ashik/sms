@@ -1,14 +1,10 @@
 import { studentsData } from "../../../shared/constant/stuents.data";
-import { IoGrid, IoList } from "react-icons/io5";
 import StudentCard from "../../../components/Dashboard/Student/StudentCard";
 import QueryController from "../../../components/Dashboard/Student/QueryController/QueryController";
 import { useSelector } from "react-redux";
 import ListHeader from "../../../shared/Components/ListHeader";
-import Icon from "../../../shared/Components/Iocn/Icon";
-import { Icons } from "../../../shared/constant/icon.constant";
 import StudentList from "../../../components/Dashboard/Student/StudentList/StudentList";
-
-export const Students = () => {
+const AllStudents = () => {
   const { searchQuery, filters, view } = useSelector((state) => state.controls);
   const filteredStudents = studentsData.filter((student) => {
     const matchesSearch =
@@ -31,7 +27,6 @@ export const Students = () => {
     studentsData.length > 0 ? Object.keys(studentsData[0].perSemesterCGPA) : [];
   return (
     <div className="container mx-auto p-4">
-      <ListHeader />
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
         <QueryController semesterOptions={semesterOptions} />
       </div>
@@ -83,3 +78,5 @@ export const Students = () => {
     </div>
   );
 };
+
+export default AllStudents;

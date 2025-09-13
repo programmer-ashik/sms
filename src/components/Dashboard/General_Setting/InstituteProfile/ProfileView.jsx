@@ -3,7 +3,7 @@ import { Icons } from "../../../../shared/constant/icon.constant";
 
 export const ProfilePreview = ({ values }) => {
   return (
-    <div className="p-6 rounded shadow-md w-full max-w-sm theme-bg theme-text">
+    <div className="p-6 rounded w-full max-w-sm theme-bg theme-text">
       <h2 className="text-md font-semibold border-1 p-2 rounded-md inline-block border border-indigo-400">
         Profile Preview
       </h2>

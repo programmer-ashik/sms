@@ -1,3 +1,5 @@
+import { Route } from "./route.constant";
+
 // menuItems.js
 export const menuItems = [
   {
@@ -118,31 +120,41 @@ export const nav_menu = [
           },
         ],
       },
+      // class
       {
         id: "classes",
         label: "Classes",
         icon: "lucide:school",
         isOpen: false,
         children: [
-          { id: "classes-all", label: "All Classes", to: "/classes" },
-          { id: "classes-new", label: "New Class", to: "/classes/new" },
+          {
+            id: "classes-all",
+            label: "All Classes",
+            to: "/dashboard/classes/allClasses",
+          },
+          {
+            id: "classes-new",
+            label: "New Class",
+            to: "/dashboard/classes/newClass",
+          },
         ],
       },
+      // subjects
       {
         id: "subjects",
         label: "Subjects",
         icon: "lucide:book-open",
-        isOpen: false,
+        isOpen: true,
         children: [
           {
             id: "subjects-by-class",
             label: "Classes With Subjects",
-            to: "/subjects/by-class",
+            to: Route.classWithSubjects,
           },
           {
             id: "subjects-assign",
             label: "Assign Subjects",
-            to: "/subjects/assign",
+            to: Route.asignSubject,
           },
         ],
       },
@@ -155,43 +167,43 @@ export const nav_menu = [
           {
             id: "students-all",
             label: "All Students",
-            to: "/dashboard/students",
+            to: Route.allStudents,
           },
-          { id: "students-add", label: "Add New", to: "/students/new" },
+          { id: "students-add", label: "Add New", to: Route.add_new },
           {
             id: "students-families",
             label: "Manage Families",
-            to: "/students/families",
+            to: Route.manage_families,
           },
           {
             id: "students-status",
             label: "Active / Inactive",
-            to: "/students/status",
+            to: Route.active_inactive,
           },
           {
             id: "students-admission-letter",
             label: "Admission Letter",
-            to: "/students/admission-letter",
+            to: Route.admission_letter,
           },
           {
             id: "students-id-cards",
             label: "Student ID Cards",
-            to: "/students/id-cards",
+            to: Route.students_cards,
           },
           {
             id: "students-print-list",
             label: "Print Basic List",
-            to: "/students/print-list",
+            to: Route.print_basic_list,
           },
           {
             id: "students-manage-login",
             label: "Manage Login",
-            to: "/students/manage-login",
+            to: Route.manages_login,
           },
           {
             id: "students-promote",
             label: "Promote Students",
-            to: "/students/promote",
+            to: Route.promote_students,
           },
         ],
       },
@@ -201,22 +213,30 @@ export const nav_menu = [
         icon: "lucide:id-card",
         isOpen: false,
         children: [
-          { id: "employees-all", label: "All Employees", to: "/employees" },
-          { id: "employees-add", label: "Add New", to: "/employees/new" },
+          {
+            id: "employees-all",
+            label: "All Employees",
+            to: Route.all_employees,
+          },
+          {
+            id: "employees-add",
+            label: "Add New",
+            to: Route.add_new_employees,
+          },
           {
             id: "employees-id-cards",
             label: "Staff ID Cards",
-            to: "/employees/id-cards",
+            to: Route.stuff_id_cards,
           },
           {
             id: "employees-job-letter",
             label: "Job Letter",
-            to: "/employees/job-letter",
+            to: Route.job_letter,
           },
           {
             id: "employees-manage-login",
             label: "Manage Login",
-            to: "/employees/manage-login",
+            to: Route.manage_employees_login,
           },
         ],
       },
@@ -229,22 +249,22 @@ export const nav_menu = [
           {
             id: "accounts-coa",
             label: "Charts of Account",
-            to: "/accounts/chart-of-accounts",
+            to: Route.charts_of_account,
           },
           {
             id: "accounts-income",
             label: "Add Income",
-            to: "/accounts/income/new",
+            to: Route.add_income,
           },
           {
             id: "accounts-expense",
             label: "Add Expense",
-            to: "/accounts/expense/new",
+            to: Route.add_expense,
           },
           {
             id: "accounts-statement",
             label: "Account Statement",
-            to: "/accounts/statement",
+            to: Route.account_statement,
           },
         ],
       },
@@ -257,21 +277,21 @@ export const nav_menu = [
           {
             id: "fees-generate-invoice",
             label: "Generate Fees Invoice",
-            to: "/fees/invoices/generate",
+            to: Route.generate_fees_invoice,
           },
-          { id: "fees-collect", label: "Collect Fees", to: "/fees/collect" },
+          { id: "fees-collect", label: "Collect Fees", to: Route.collect_fees },
           {
             id: "fees-paid-slip",
             label: "Fees Paid Slip",
-            to: "/fees/paid-slip",
+            to: Route.fees_paid_slip,
           },
           {
             id: "fees-defaulters",
             label: "Fees Defaulters",
-            to: "/fees/defaulters",
+            to: Route.fees_defaulters,
           },
-          { id: "fees-report", label: "Fees Report", to: "/fees/report" },
-          { id: "fees-delete", label: "Delete Fees", to: "/fees/delete" },
+          { id: "fees-report", label: "Fees Report", to: Route.fees_report },
+          { id: "fees-delete", label: "Delete Fees", to: Route.delete_fees },
         ],
       },
       {
@@ -280,14 +300,26 @@ export const nav_menu = [
         icon: "lucide:banknote",
         isOpen: false,
         children: [
-          { id: "salary-pay", label: "Pay Salary", to: "/salary/pay" },
+          {
+            id: "salary-pay",
+            label: "Pay Salary",
+            to: Route.pay_salary,
+          },
           {
             id: "salary-paid-slip",
             label: "Salary Paid Slip",
-            to: "/salary/paid-slip",
+            to: Route.salary_paid_slip,
           },
-          { id: "salary-sheet", label: "Salary Sheet", to: "/salary/sheet" },
-          { id: "salary-report", label: "Salary Report", to: "/salary/report" },
+          {
+            id: "salary-sheet",
+            label: "Salary Sheet",
+            to: Route.salary_sheet,
+          },
+          {
+            id: "salary-report",
+            label: "Salary Report",
+            to: Route.salary_report,
+          },
         ],
       },
       {
@@ -299,27 +331,27 @@ export const nav_menu = [
           {
             id: "attendance-students",
             label: "Students Attendance",
-            to: "/attendance/students",
+            to: Route.students_attendence,
           },
           {
             id: "attendance-employees",
             label: "Employees Attendance",
-            to: "/attendance/employees",
+            to: Route.employees_attendence,
           },
           {
             id: "attendance-class-wise",
             label: "Class Wise Report",
-            to: "/attendance/class-wise-report",
+            to: Route.class_wide_report,
           },
           {
             id: "attendance-students-report",
             label: "Students Attendance Report",
-            to: "/attendance/students/report",
+            to: Route.students_attendence_report,
           },
           {
             id: "attendance-employees-report",
             label: "Employees Attendance Report",
-            to: "/attendance/employees/report",
+            to: Route.employees_attendence_report,
           },
         ],
       },
@@ -332,36 +364,37 @@ export const nav_menu = [
           {
             id: "timetable-weekdays",
             label: "Weekdays",
-            to: "/timetable/weekdays",
+            to: Route.weekdays,
           },
           {
             id: "timetable-periods",
             label: "Time Periods",
-            to: "/timetable/periods",
+            to: Route.time_periouds,
           },
           {
             id: "timetable-classrooms",
             label: "Class Rooms",
-            to: "/timetable/classrooms",
+            to: Route.class_rooms,
           },
           {
             id: "timetable-create",
             label: "Create Timetable",
-            to: "/timetable/create",
+            to: Route.create_timetable,
           },
           {
             id: "timetable-generate-class",
             label: "Generate For Class",
-            to: "/timetable/generate/class",
+            to: Route.generate_for_class,
           },
           {
             id: "timetable-generate",
             label: "Generate",
-            to: "/timetable/generate",
+            to: Route.generate,
           },
         ],
       },
       {
+        // need to work on it
         id: "homework",
         label: "Homework",
         icon: "lucide:clipboard-list",
@@ -377,23 +410,23 @@ export const nav_menu = [
           {
             id: "behaviour-rate",
             label: "Rate Behaviours",
-            to: "/behaviour/rate",
+            to: Route.rate_behaviour,
           },
-          { id: "skills-rate", label: "Rate Skills", to: "/skills/rate" },
+          { id: "skills-rate", label: "Rate Skills", to: Route.rate_skills },
           {
             id: "observations",
             label: "Observations",
-            to: "/behaviour/observations",
+            to: Route.observations,
           },
           {
             id: "affective-report",
             label: "Affective Domain Rating Report",
-            to: "/behaviour/affective-report",
+            to: Route.affective_domain,
           },
           {
             id: "psychomotor-report",
             label: "Psychomotor Domain Rating Report",
-            to: "/behaviour/psychomotor-report",
+            to: Route.psychomotor,
           },
         ],
       },
@@ -406,21 +439,21 @@ export const nav_menu = [
           {
             id: "store-analytics",
             label: "Store analytics",
-            to: "/store/analytics",
+            to: Route.store_analytics,
           },
           {
             id: "store-product-categories",
             label: "Products Categories",
-            to: "/store/product-categories",
+            to: Route.products_categories,
           },
-          { id: "store-tax", label: "products Tax", to: "/store/tax" },
-          { id: "store-products", label: "Products", to: "/store/products" },
+          { id: "store-tax", label: "products Tax", to: Route.products_tax },
+          { id: "store-products", label: "Products", to: Route.products },
           {
             id: "store-new-order",
             label: "New Order",
-            to: "/store/orders/new",
+            to: Route.new_order,
           },
-          { id: "store-all-orders", label: "All Order", to: "/store/orders" },
+          { id: "store-all-orders", label: "All Order", to: Route.all_order },
         ],
       },
       {

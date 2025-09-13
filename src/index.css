@@ -1,14 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Orbitron:wght@400..900&family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Orbitron:wght@400..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @theme {
-  --font-sans: "Poppins", sans-serif;
-  --font-serif: "Lora", serif;
-  --font-primary: "Plexend", serif;
-  --font-banner: "Orbitron", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
   /* Colors */
-  --color-primary: #f5f5f5; /* Deep blue-gray for main headings */
+  --color-primary: #8200da; /* Deep blue-gray for main headings */
   /* for dark bg */
   --color-darkBg: #222831;
   /* for dark text-color */
@@ -21,6 +17,7 @@
   --color-offwhite: #fbfbfb;
   --color-main: #08cb00;
   --color-gray-2: #7adaa5;
+  --color-header: #6486f5;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -47,7 +44,7 @@
   @apply bg-gray-100 dark:bg-darkBg;
 }
 .theme-border {
-  @apply p-[1px] rounded-md bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 dark:from-purple-600 dark:via-blue-500 dark:to-cyan-400;
+  @apply border border-[#7A1CAC] rounded-[20px] dark:border-[#AD49E1] outline-none;
 }
 .tmponhover::before {
   content: "";
@@ -85,4 +82,13 @@
 }
 .icon {
   @apply text-3xl;
+}
+.btn_primery {
+  @apply bg-[#F6B17A] text-black border-none text-[14px] tracking-wider font-mono font-normal;
+}
+.required {
+  @apply border-[#BA487F];
+}
+.gradient_primary {
+  @apply bg-linear-65 from-[#246be4] to-[#3869e7];
 }

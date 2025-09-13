@@ -11,14 +11,13 @@ export default function DashBoardLayout() {
       <div className="row-span-1">
         <TopNavbar openSidebar={openSidebar} />
       </div>
-
+      {/* md:grid-cols-[200px_auto] */}
       {/* Main Content Area */}
-      <div className="grid grid-cols-1 md:grid-cols-[310px_auto] overflow-hidden">
+      <div className="grid grid-cols-1  lg:grid-cols-[250px_auto] xl:grid-cols-[250px_auto] overflow-hidden">
         {/* Sidebar */}
-        <div className=" md:block dark:bg-gray-700">
-          {/* <Sidebar openSidebar={openSidebar} /> */}
-          <DemoSidebar openSidebar={openSidebar} />
-        </div>
+        {/* <Sidebar openSidebar={openSidebar} /> */}
+        <DemoSidebar openSidebar={openSidebar} />
+
         {/* Main Outlet */}
         <div className="h-[calc(100vh-64px)]">
           <main className=" h-full p-2 overflow-scroll grow theme-bg theme-text">
