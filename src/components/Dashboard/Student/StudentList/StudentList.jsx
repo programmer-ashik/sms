@@ -4,12 +4,13 @@ import Icon from "../../../../shared/Components/Iocn/Icon";
 import StudentModal from "../../../../shared/Components/Modal/studentModal/StudentModal";
 import StudentEditModal from "../../../../shared/Components/Modal/studentModal/StudentEditModal";
 import DeleteConfirmModal from "../../../../shared/Components/Modal/studentModal/DeleteConfirmModal";
+import { Pagination } from "../../../../shared/Components/Paginations/Pagination";
 
 const StudentList = ({ student }) => {
   const [editstudent, setEditStudent] = useState(false);
   const [deleteData, setDelete] = useState(false);
   const [viewstudent, setViewStudent] = useState(false);
-  console.log(viewstudent);
+
   return (
     <>
       {viewstudent && (
